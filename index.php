@@ -8,9 +8,9 @@ if(isset($_POST["btn"])) {
     $sql = "INSERT INTO student(email,pass) VALUES('$email','$pass')";
     $insertData = mysqli_query($connection,$sql);
     if($insertData) {
-        echo "Data Insert successfully";
+        echo "<div class=\"alert alert-success\">Data insert successfully</div>";
     } else {
-        echo "error";
+        echo "<div class=\"alert alert-danger\">error</div>";
     }
 }
 

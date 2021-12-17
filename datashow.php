@@ -1,8 +1,13 @@
 <?php 
+session_start();
 @include "db.php";
 
 $sql = "SELECT * FROM student";
 $showData = mysqli_query($connection, $sql);
+
+
+
+
 ?>
 
 
@@ -18,6 +23,17 @@ $showData = mysqli_query($connection, $sql);
 <body>
 
 <div class="container">
+ 
+     <?php 
+     if(isset( $_SESSION["success"])) {
+        echo  $_SESSION["success"];
+    }
+    if(isset( $_SESSION["error"])) {
+        echo  $_SESSION["error"];
+    }
+     
+     ?>
+ 
     <br>
     <br>
     <a href="index.php" class="btn btn-success">Back</a>
@@ -53,9 +69,9 @@ if(mysqli_num_rows($showData) > 0) {
             <td><?php echo $date; ?></td>
             
             <td>
-                <a href="" class="btn btn-info btn-sm">view</a>
-                <a href="" class="btn btn-warning btn-sm">edit</a>
-                <a href="" class="btn btn-danger btn-sm">delete</a>
+                <a href="view.php?view=<?php echo $id; ?>" class="btn btn-info btn-sm">view</a>
+                <a href="edit.php" class="btn btn-warning btn-sm">edit</a>
+                <a href="delete.php?delete=<?php echo $id; ?>" class="btn btn-danger btn-sm">delete</a>
             </td>
         </tr>
         <?php 
@@ -71,3 +87,14 @@ if(mysqli_num_rows($showData) > 0) {
     
 </body>
 </html>
+
+<?php 
+
+if(isset( $_SESSION["success"])) {
+    unset($_SESSION["success"]);
+}
+if(isset( $_SESSION["error"])) {
+    unset($_SESSION["error"]);
+}
+
+?>
