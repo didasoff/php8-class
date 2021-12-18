@@ -30,7 +30,7 @@ if(isset($_GET["view"])) {
 <div class="container">
     <br>
     <br>
-    <a href="datashow.php" class="btn btn-success">Home</a>
+    <a href="index.php" class="btn btn-success">Home</a>
     <br>
     <br>  
     <div class="card">
