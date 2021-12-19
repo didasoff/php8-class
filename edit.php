@@ -11,6 +11,7 @@ if(isset($_GET['edit'])) {
     $result = mysqli_query($connection, $sql);
 
     while($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
         $email = $row["email"];
         $pass = $row["pass"];
     }
@@ -32,19 +33,19 @@ if(isset($_GET['edit'])) {
 
 <body>
     <div class="container">
-        <?php 
-            if(isset( $_SESSION["success"])) {
-                echo  $_SESSION["success"];
-            }
-        
-        ?>
+  
         <h1>Update your data</h1>
         <a href="index.php" class="btn btn-primary">Home</a>
         <br>
         <br>
         <div class="card">
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="update.php?update=<?php echo $id;?>" method="POST">
+                    <div class="mb-3">
+                        <h1>
+                           ID : <?php echo $id; ?>
+                        </h1>
+                    </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="<?php echo $email; ?>">
@@ -56,19 +57,19 @@ if(isset($_GET['edit'])) {
                     <button type="submit" class="btn btn-primary" name="updatebtn">Update</button>
                     
                     <?php 
-                    if(isset($_POST["updatebtn"])) {
+                    // if(isset($_POST["updatebtn"])) {
 
-                        $email = $_POST["email"];
-                        $pass = $_POST["pass"];
+                    //     $email = $_POST["email"];
+                    //     $pass = $_POST["pass"];
                     
-                            $sql = "UPDATE student SET email='$email', pass='$pass' WHERE id = {$id}";
-                            $update = mysqli_query($connection,$sql);
-                            if($update) {
-                                $_SESSION["success"] = "<div class=\"alert alert-success\">Data updated successfully</div>";
-                                header("Location:index.php");
-                            }
+                    //         $sql = "UPDATE student SET email='$email', pass='$pass' WHERE id = {$id}";
+                    //         $update = mysqli_query($connection,$sql);
+                    //         if($update) {
+                    //             $_SESSION["success"] = "<div class=\"alert alert-success\">Data updated successfully</div>";
+                    //             header("Location:index.php");
+                    //         }
                     
-                    }
+                    // }
                     
                     ?>
                 </form>
@@ -79,9 +80,3 @@ if(isset($_GET['edit'])) {
 
 </html>
 
-<?php 
-if(isset( $_SESSION["success"])) {
-    unset($_SESSION["success"]);
-}
-
-?>
