@@ -18,6 +18,18 @@ include "db.php";
 </head>
 
 <body>
+    <header class="bg-light shadow p-4">
+        <div class="container">
+            <?php 
+             if (isset($_SESSION['name'])) {  
+                 ?>
+                 <a href="logout.php" class="btn btn-danger">Logout</a>
+                 <?php }else{ ?>
+            <a href="login.php" class="btn btn-primary">Login</a>
+            <?php } ?>
+            <a href="addPost.php" class="btn btn-warning">Add Post</a>
+        </div>
+    </header>
 
     <div class="container">
 
@@ -32,35 +44,41 @@ include "db.php";
      ?>
 
         <br>
-        <a href="insert.php" class="btn btn-success">Insert</a>
-        <a href="login.php" class="btn btn-primary">Login</a>
-        <a href="logout.php" class="btn btn-danger">Logout</a>
-        <a href="addPost.php" class="btn btn-danger">Add Post</a>
-
-        <br>
-        <?php 
-        if (isset($_SESSION['name'])) {
-            echo "Welcome You are loged in  ". $_SESSION['name'];
-        }
-        ?>
-        <br>
-        <h1>Data Table</h1>
-        <span class="badge bg-danger text-white">
+        <div class="card">
+            <div class="card-body">
+            <h1 class="text-muted">Welcome Dashboard</h1>
+            <span class="fw-bold h2 text-danger">
+            <?php 
+            if (isset($_SESSION['name'])) {
+                echo $_SESSION['name'];
+            }
+            ?>
+            </span>
+            </div>
+        </div>
+      
+        <div class="card">
+            <div class="card-body">
+            <h3>Data Table</h1>
+            <span class="badge bg-danger text-white">
             <?php 
         // visitor
-$sql = "UPDATE view SET views=`views`+1 WHERE id='1'";
-$result = mysqli_query($connection,$sql);
+            $sql = "UPDATE view SET views=`views`+1 WHERE id='1'";
+            $result = mysqli_query($connection,$sql);
 
-$sql = "SELECT * FROM view";
-$visitor = mysqli_query($connection, $sql);
-while($row = mysqli_fetch_assoc($visitor)){
-    $views = $row['views'];
-    echo "Page Views $views";
-}
+            $sql = "SELECT * FROM view";
+            $visitor = mysqli_query($connection, $sql);
+            while($row = mysqli_fetch_assoc($visitor)){
+                $views = $row['views'];
+                echo "Page Views $views";
+            }
         
-        ?>
+            ?>
         </span>
-        <div class="card">
+                    
+                <a href="insert.php" class="btn btn-success">Insert</a>
+
+            </div>
             <table class="table">
                 <tr>
                     <th>ID</th>
@@ -119,5 +137,8 @@ if(isset( $_SESSION["success"])) {
 if(isset( $_SESSION["error"])) {
     unset($_SESSION["error"]);
 }
+// if (isset($_SESSION['name'])) {  
+//     unset($_SESSION['name']);
+// }
 
 ?>

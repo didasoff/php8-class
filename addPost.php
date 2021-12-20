@@ -20,6 +20,7 @@ if (!isset($_SESSION['email'])) {
 <body>
     <div class="container">
         <br><br>
+        <a href="index.php" class="btn btn-success">Home</a>
         <div class="card">
            <div class="card-body">
            <h1>Add Post</h1>
@@ -27,6 +28,23 @@ if (!isset($_SESSION['email'])) {
                <div class="mb-3">
                    Image :
                    <input type="file" name="image" class="form-control">
+               </div>
+               <div class="mb-3">
+                   Product Name :
+                   <input type="text" name="name" class="form-control" placeholder="Product Name">
+               </div>
+               
+               <div class="mb-3">
+                   Shop Name :
+                   <input type="text" name="sname" class="form-control" placeholder="Shop Name">
+               </div>
+               <div class="mb-3">
+                   Price :
+                   <input type="text" name="price" class="form-control" placeholder="Product Price">
+               </div>
+               <div class="mb-3">
+                 
+                   <input type="submit" name="postBtn" class="form-control btn btn-success" value="Submit">
                </div>
 
            </form>
