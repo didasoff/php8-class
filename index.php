@@ -14,9 +14,7 @@ include "db.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css"
-        integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css"/>
 </head>
 
 <body>
@@ -34,8 +32,17 @@ include "db.php";
      ?>
 
         <br>
-        <a href="insert.php" class="btn btn-success">Back</a>
+        <a href="insert.php" class="btn btn-success">Insert</a>
+        <a href="login.php" class="btn btn-primary">Login</a>
+        <a href="logout.php" class="btn btn-danger">Logout</a>
+        <a href="addPost.php" class="btn btn-danger">Add Post</a>
+
         <br>
+        <?php 
+        if (isset($_SESSION['name'])) {
+            echo "Welcome You are loged in  ". $_SESSION['name'];
+        }
+        ?>
         <br>
         <h1>Data Table</h1>
         <span class="badge bg-danger text-white">
