@@ -64,7 +64,7 @@ if(isset($_POST["register-btn"])) {
                         <input type="text" name="pass" class="form-control" placeholder="password">
                     </div>
                     <div class="mb-3">
-                        <input type="submit" name="register-btn" class="btn btn-success" value="Login">
+                        <input type="submit" name="register-btn" class="btn btn-success" value="Register">
                     </div>
                     <span>already a accout, <a href="login.php">login </a></span>
                 </form>
